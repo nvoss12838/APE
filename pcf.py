@@ -57,63 +57,69 @@ class controldata(object):
     JCOSAVEITN : "jcosaveitn" or nojcosaveitn" write current jacobian matrix to iteration specific JCO file
     REISAVEITN : "reisaveitn or noreisaveitn" Store residuals to iteration specific residuals file
     PARSAVEITN : "parsaveitn or noparsaveitin" Store iteration specific paramater value files
-    '''
-    def __init__(self,rstfile,pestmode,npar,nobs,npargp,nprior,nobsgp,maxcompdim,ntplfle,ninsfle,precis,dpoint,numcom,jacfile,messfile \
-      ,obsreref,rlambda1,rlamfac,phiratsuf,phiredlam,numlam,jacupdate,lamforgive,derforgive,relparmax,facparmax,facorig,iboundstick,upvecbend,absparmax \
-	,phiredswh,noptmax,phiredstp,nphistp,nphinored,relparstp,nrelpar,phistropthresh,lastrun,phiaboandon,icov,icor,ieig,ires,jcosave,verboserec \
-	  ,jcosaveitn,reisaveitn,parsaveitn,parsaverun):
-	self.rstfile = rstfile
-	self.pestmode = pestmode
-	self.npar = npar
-	self.nobs = nobs
-	self.npargp = npargp
-	self.nprior = nprior
-	self.nobsgp = nobsgp
-	self.maxcompdim = maxcompdim
-	self.ntplfle = ntplfle
-	self.ninsfle = ninsfle
-	self.precis = precis
-	self.dpoint = dpoint
-	self.numcom = numcom
-	self.jacfile = jacfile
-	self.messfile = messfile
-	self.obsreref = obsreref
-	self.rlambda1 = rlambda1
-	self.rlamfac = rlamfac
-	self.phiratsuf = phiratsuf
-	self.phiredlam = phiredlam
-	self.numlam = numlam
-	self.jacupdate = jacupdate
-	self.lamforgive = lamforgive
-	self.derforgive = deforgive
-	self.relparmax = relparmax
-	self.facparmax = facparmax
-	self.facorig = facorig
-	self.iboundstick = iboundstick
-	self.upvecbend = upvecbend
-	self.absparmax = absparmax
-	self.phiredswh = phiredswh
-	self.noptmax = noptmax
-	self.phiredstp = phiredstp
-	self.nphistp = nphistp
-	self.nphinored = nphinored
-	self.relparstp = relparstp
-	self.nrelpar = nrelpar
-	self.phistropthresh = phistropthresh
-	self.lastrun = lastrun
-	self.phiabandon = phiabandon
-	self.icov = icov
-	self.icor = icor
-	self.ieig = ieig
-	self.ires = ires
-	self.jcosave = jcosave
-	self.verboserec = verboserec
-	self.jcosaveitn = jcosaveitn
-	self.reisaveitn = reisaveitn
-	self.parsaveitn = parsaveitn
-	self.parsaverun = rarsaverun
-	return
+  '''
+  def __init__(self):
       
+	self.rstfile = 'norestart'
+	self.pestmode = 'regularisation'
+	self.npar = 17
+	self.nobs = 1342
+	self.npargp = 17
+	self.nprior = 0
+	self.nobsgp = 1
+	self.maxcompdim = ' '
+	self.ntplfle = 1
+	self.ninsfle = 1
+	self.precis = 'single'
+	self.dpoint = 'point'
+	self.numcom = 1
+	self.jacfile = 0
+	self.messfile = 0
+	self.obsreref = 'noobsreref'
+	self.rlambda1 = 60.0
+	self.rlamfac = -3.0
+	self.phiratsuf = 0.3
+	self.phiredlam = 0.03
+	self.numlam = 10
+	self.jacupdate = 999
+	self.lamforgive = 'nolamforgive'
+	self.derforgive = 'noderforgive'
+	self.relparmax = 3.0
+	self.facparmax = 3.0
+	self.facorig = 0.001
+	self.iboundstick = 0
+	self.upvecbend = ' '
+	self.absparmax = ' '
+	self.phiredswh = 0.1
+	self.noptmax = 30
+	self.phiredstp = 0.01
+	self.nphistp = 3
+	self.nphinored = 3
+	self.relparstp = 0.01
+	self.nrelpar = 3
+	self.phistropthresh = ' '
+	self.lastrun = ' '
+	self.phiabandon = ' '
+	self.icov = 0
+	self.icor = 0
+	self.ieig = 0
+	self.ires = 0
+	self.jcosave = 1
+	self.verboserec = ' '
+	self.jcosaveitn = ' '
+	self.reisaveitn = ' '
+	self.parsaveitn = ' '
+	self.parsaverun = ' '
+	return
+   
+  def set_suggested_values(self):
+	   	'''
+	   	set values to those suggested in the PEST manual
+	   	'''
+		self.rlamfac = -3.0
+	   	self.rlambda1 = 10.0
+	   	return
+
 class svd(object):
   '''
   Create a singular value decomposition
@@ -124,12 +130,24 @@ class svd(object):
     EIGTHRESH : <1 eiqenvalue ratio threshold for truncation
     EIGWRITE : 0,1 determines content of scd output file
   '''
-  def __init__(self,svdmode,maxsing,eigthresh,eigwrite):
-      self.svdmode = svdmode
-      self.maxsing = maxsing
-      self.eigthresh = eigthresh
-      self.eigwrite = eigwrite
+  
+  def __init__(self):
+      self.svdmode = 1
+      self.maxsing = 13
+      self.eigthresh = 0.0000007
+      self.eigwrite = 0
       return
+
+  def set_suggested_values(self):
+   	'''
+   	set values to those suggested in the PEST manual
+   	'''
+   	
+   	self.svdmode = 1
+   	self.maxsing = input('How many adjustable paramaters are there? : ')
+   	self.eigthresh = 0.0000005
+   	self.eiqwrite = 0
+   	return
 
 class pargroup(object):
   '''
@@ -143,10 +161,11 @@ class pargroup(object):
     DERINCMUL : derivative increment multiplier when undertaking centrl derivatives calculation
     DERMTHD : "parabolic,outside_pts,best_fit,minvar,maxprec" method of central derivatives calculation
   '''
-  def __init__(self,pargpname,inctyp,derinc,forcen,derincmul, dermthd):
+  def __init__(self,pargpname,inctyp,derinc,derinclb,forcen,derincmul, dermthd):
       self.pargpname = pargpname
       self.inctyp = inctyp
       self.derinc = derinc
+      self.derinclb = derinclb
       self.forcen = forcen
       self.derincmul = derincmul
       self.dermthd = dermthd
@@ -188,7 +207,7 @@ class obsgroup(object):
   Attributes:
   OBGNME  : Name of observation group
   '''
-  def __init__(seld,obgnme):
+  def __init__(self,obgnme):
     self.obgnme = obgnme 
     return
   
@@ -202,12 +221,12 @@ class observation(object):
       OBSVAL : observation value
       WEIGHT : observation weight
       OBGNME : group that observation belongs
-  '''
-  def __init__(self,obsnme,obsval,weight,obgnme):
-    self.obsnme = obsnme
-    self.obsval = obsval
-    self.weight = weight
-    self.obgnme = obgnme
+   '''
+   def __init__(self,obsnme,obsval,weight,obgnme):
+      self.obsnme = obsnme
+      self.obsval = obsval
+      self.weight = weight
+      self.obgnme = obgnme
 
 class commandline(object):
   '''
@@ -246,8 +265,8 @@ class prior(object):
     EQ : PFAC*PARNME + PFIC * log(PARNME) = PIVAL Text representing a prior information equation
     WEIGHT : weight of the prior information
     OBGPNME: Observation group that prior information belongs to 
- '''
- def __init__(self,pilbl,eq,weight,obgpnme):
+  '''
+  def __init__(self,pilbl,eq,weight,obgpnme):
     self.pilbl = pilbl
     self.eq = eq
     self.weight = weight
@@ -267,10 +286,10 @@ class regularisation(object):
     WFFAC : regularisation weight factor adjjustment factor
     WFTOL : covergence criterion for regulatrisation weight factor
     IREGADJ : 0,1,2,3,4,5  instructs PEST to perform iner-regularisation group weight factor adjustments
-   '''
-   def __init__(self,phimlim,phimaccept,wfinit,wfmin,wfmax,wffac,wftol,irgadj):
+  '''
+  def __init__(self,phimlim,phimaccept,wfinit,wfmin,wfmax,wffac,wftol,iregadj):
       self.phimlim = phimlim
-      self.phimaccept  = phumaccept
+      self.phimaccept  = phimaccept
       self.wfinit = wfinit
       self.wfmin = wfmin 
       self.wfmax = wfmax
@@ -279,7 +298,7 @@ class regularisation(object):
       self.iregadj = iregadj
       return
     
-def createPCF(filName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList,obsObjList,commandObjList,modinoutObj,piObjList,regularObj):
+def createPCF(fileName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList,obsObjList,commandObjList,modinoutObj,piObjList,regularObj):
     '''
     create a PCF by compiling the proper objects and writing them to file
     '''
@@ -287,7 +306,7 @@ def createPCF(filName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList
     f.write('pcf\n')
     f.write('* control data\n')
     f.write('%s %s\n' % (controlObj.rstfile,controlObj.pestmode))
-    f.write('%s %s %s %s %s %s\n') % (controlObj.npar,controlObj.nobs,controlObj.npargp,controlObj.nprior,controlObj.nobsgp,controlObj.maxcompdim))
+    f.write('%s %s %s %s %s %s\n' % (controlObj.npar,controlObj.nobs,controlObj.npargp,controlObj.nprior,controlObj.nobsgp,controlObj.maxcompdim))
     f.write('%s %s %s %s %s %s %s %s\n' % (controlObj.ntplfle,controlObj.ninsfle,controlObj.precis,controlObj.dpoint,controlObj.numcom,controlObj.jacfile,\
 					  controlObj.messfile,controlObj.obsreref))
     f.write('%s %s %s %s %s %s %s %s\n' % (controlObj.rlambda1,controlObj.rlamfac,controlObj.phiratsuf,controlObj.phiredlam,controlObj.numlam,controlObj.jacupdate\
@@ -295,9 +314,9 @@ def createPCF(filName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList
     f.write('%s %s %s %s %s %s\n' % (controlObj.relparmax,controlObj.facparmax,controlObj.facorig,controlObj.iboundstick,controlObj.upvecbend,controlObj.absparmax))
     f.write('%s\n' % (controlObj.phiredswh))
     f.write('%s %s %s %s %s %s %s %s %s\n' % (controlObj.noptmax,controlObj.phiredstp,controlObj.nphistp,controlObj.nphinored,controlObj.relparstp,controlObj.nrelpar,\
-					      controlObj.phistropthresh,controlObj.lastrun,controlObj.phiabandon)
+					      controlObj.phistropthresh,controlObj.lastrun,controlObj.phiabandon))
     f.write('%s %s %s %s %s %s %s %s %s %s\n' % (controlObj.icov,controlObj.icor,controlObj.ieig,controlObj.ires,controlObj.jcosave,controlObj.verboserec,controlObj.jcosaveitn,\
-						controlObj.reisaveitn,controlObj.parsaveitn,controlObj.parsaverun)
+						controlObj.reisaveitn,controlObj.parsaveitn,controlObj.parsaverun))
     f.write('* singular value decomposition\n')
     f.write('%s\n' % (svdObj.svdmode))
     f.write('%s %s\n' % (svdObj.maxsing,svdObj.eigthresh))
@@ -307,13 +326,13 @@ def createPCF(filName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList
       f.write('%s %s %s %s %s %s %s\n' % (group.pargpname,group.inctyp,group.derinc,group.derinclb,group.forcen,group.derincmul,group.dermthd))
     f.write('* paramater data\n')
     for data in parDataObjList:
-      f.write('%s %s %s %s %s %s %s\n' % (data.parnme,data.partrans,data.parchglim,data.parval1,data.parlbnd,data.parubnd,data.pargp,data.scale,data.offset,data.dercom))
+      f.write('%s %s %s %s %s %s %s %s %s %s\n' % (data.parnme,data.partrans,data.parchglim,data.parval1,data.parlbnd,data.parupbnd,data.pargp,data.scale,data.offset,data.dercom))
     f.write('* observation groups\n')
     for group in obsgpObjList:
-      f.write('%s \n' % (group.obsnme))
+      f.write('%s \n' % (group.obgnme))
     f.write('* observation data \n')
     for obs in obsObjList:
-      f.write('%s %s %s %s' % (obs.obsnme,obs.obsval,obs.weight,obs.obgnme))
+      f.write('%s %s %s %s \n' % (obs.obsnme,obs.obsval,obs.weight,obs.obgnme))
     f.write('* model command line \n')
     for commandLine in commandObjList:
       f.write('%s' % (commandLine.command))
@@ -322,7 +341,7 @@ def createPCF(filName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList
     f.write('%s %s\n' % (modinoutObj.insfle,modinoutObj.outfle))
     f.write('* prior information\n')
     for pi in piObjList:
-      f.write('%s %s %s %s\n' % (pi.pilbl,pi.eq,pi.weight,pi.obgnme))
+      f.write('%s %s %s %s\n' % (pi.pilbl,pi.eq,pi.weight,pi.obgpnme))
     f.write('* regularisation\n')
     f.write('%s %s\n' % (regularObj.phimlim,regularObj.phimaccept))
     f.write('%s %s %s\n' % (regularObj.wfinit,regularObj.wfmin,regularObj.wfmax))
