@@ -6,113 +6,114 @@ objects for storing pest related control file
 '''
 
 class controldata(object):
-  '''
-  object containing paramaters in the control data section of the pestcontrol file
-  
-  Attributes:
-    RSTFLE : "restart or norestart" Instructs PEST whether to write restart data
-    PESTMODE : "esimation","prediction","regularisation","pareto" PEST mode of operation
-    NPAR : Number of Paramaters
-    NOBS : Number of Observations
-    NPARGP : Number of Paramapter Groups
-    NPRIOR : Number of Prior Information
-    NOBSG : Number of Observation Groups
-    MAXCOMPDIM : Number of Elements in the compresed Jacobian matrix
-    NTPLFLE : Number of Template Files
-    NINSFLE : Number of Instruction Files
-    PRECIS : "single or double" Precision
-    DPOINT : "point or nopoint" Whether to use Decimal Points
-    NUMCOM : Number of command lines used to run model
-    JACFILE : 0,1,-1 whether the model uses an external derivitives file
-    MESSFILE : 0,1 whether PEST writes a PEST-to-Model message file
-    RLAMBDA1 : initial Marquart lambda
-    RLAMFAC : dictates Marqaurt lambda adjustment process
-    PHIRATSUF : fractional objective function sufficient for end of current iterations
-    PHIREDLAM : termination criterion for Marquardt lamda search
-    NUMLAM : maximum number of marquart lambda test
-    JACUPDATE : activation of Broyden;s Jacobian Update procedure
-    LAMFORGIVE : treat model run failure during the lamda search as high objective function
-    RELPARMAX : paramater relative change limit
-    FACPARMAX : paramater factor change limit
-    FACORIG : minimum fraction of original paramearcheter value in evaulating relative change
-    IBOUNDSTICK : instruct PEST not to compute derivatives for parameter at its bounds
-    UPVECBEND : instructs PEST to bend parameter upgrade vector if parameter hits bounds
-    ABSPARMAX : paramater absolute change limit
-    PHIREDSWH : sets objective function change for introduction of central derivatives
-    NOPTMAX : -2,-1,0,or any number greater then zero number of optimisation iterations
-    PHIREDSTP : relative objective function reduction triggering termination
-    NPHISTP : number of successive iterations over which PHIREDSTP applies
-    NPHINORED : number of iterations since last drop in objective function to trigger termination
-    RELPARSTP : maximum relative paramater change triggering termination
-    NRELPAR : number of successive iteration over which RELPARSTP applies
-    PHISTOPTHRESH : objective function threshold triggering termination
-    LASTRUN : 0, 1 instructs PEST to undertake final model run with best paramaters 
-    PHIABANDON : objective function value at which to abandon optimisation 
-    ICOV : 0,1 record covariance matrix 
-    ICOR : 0,1 record correlation matrix
-    IEIG : 0,1 record eigenvectiors in matrix file 
-    IRES : 0,1 record resolution data
-    JCOSAVE : "jcosave or nojcosave" save best Jacobian fileas JCO file 
-    VERBOSEREC : "verboserec or noverboserec" omit obeservation data from rec file
-    JCOSAVEITN : "jcosaveitn" or nojcosaveitn" write current jacobian matrix to iteration specific JCO file
-    REISAVEITN : "reisaveitn or noreisaveitn" Store residuals to iteration specific residuals file
-    PARSAVEITN : "parsaveitn or noparsaveitin" Store iteration specific paramater value files
-    '''
-    def __init__(self,rstfile,pestmode,npar,nobs,npargp,nprior,nobsgp,maxcompdim,ntplfle,ninsfle,precis,dpoint,numcom,jacfile,messfile \
-      ,obsreref,rlambda1,rlamfac,phiratsuf,phiredlam,numlam,jacupdate,lamforgive,derforgive,relparmax,facparmax,facorig,iboundstick,upvecbend,absparmax \
-	,phiredswh,noptmax,phiredstp,nphistp,nphinored,relparstp,nrelpar,phistropthresh,lastrun,phiaboandon,icov,icor,ieig,ires,jcosave,verboserec \
-	  ,jcosaveitn,reisaveitn,parsaveitn,parsaverun):
-	self.rstfile = rstfile
-	self.pestmode = pestmode
-	self.npar = npar
-	self.nobs = nobs
-	self.npargp = npargp
-	self.nprior = nprior
-	self.nobsgp = nobsgp
-	self.maxcompdim = maxcompdim
-	self.ntplfle = ntplfle
-	self.ninsfle = ninsfle
-	self.precis = precis
-	self.dpoint = dpoint
-	self.numcom = numcom
-	self.jacfile = jacfile
-	self.messfile = messfile
-	self.obsreref = obsreref
-	self.rlambda1 = rlambda1
-	self.rlamfac = rlamfac
-	self.phiratsuf = phiratsuf
-	self.phiredlam = phiredlam
-	self.numlam = numlam
-	self.jacupdate = jacupdate
-	self.lamforgive = lamforgive
-	self.derforgive = deforgive
-	self.relparmax = relparmax
-	self.facparmax = facparmax
-	self.facorig = facorig
-	self.iboundstick = iboundstick
-	self.upvecbend = upvecbend
-	self.absparmax = absparmax
-	self.phiredswh = phiredswh
-	self.noptmax = noptmax
-	self.phiredstp = phiredstp
-	self.nphistp = nphistp
-	self.nphinored = nphinored
-	self.relparstp = relparstp
-	self.nrelpar = nrelpar
-	self.phistropthresh = phistropthresh
-	self.lastrun = lastrun
-	self.phiabandon = phiabandon
-	self.icov = icov
-	self.icor = icor
-	self.ieig = ieig
-	self.ires = ires
-	self.jcosave = jcosave
-	self.verboserec = verboserec
-	self.jcosaveitn = jcosaveitn
-	self.reisaveitn = reisaveitn
-	self.parsaveitn = parsaveitn
-	self.parsaverun = rarsaverun
-	return
+	'''
+	object containing paramaters in the control data section of the pestcontrol file
+	
+	Attributes:
+	  RSTFLE : "restart or norestart" Instructs PEST whether to write restart data
+	  PESTMODE : "esimation","prediction","regularisation","pareto" PEST mode of operation
+	  NPAR : Number of Paramaters
+	  NOBS : Number of Observations
+	  NPARGP : Number of Paramapter Groups
+	  NPRIOR : Number of Prior Information
+	  NOBSG : Number of Observation Groups
+	  MAXCOMPDIM : Number of Elements in the compresed Jacobian matrix
+	  NTPLFLE : Number of Template Files
+	  NINSFLE : Number of Instruction Files
+	  PRECIS : "single or double" Precision
+	  DPOINT : "point or nopoint" Whether to use Decimal Points
+	  NUMCOM : Number of command lines used to run model
+	  JACFILE : 0,1,-1 whether the model uses an external derivitives file
+	  MESSFILE : 0,1 whether PEST writes a PEST-to-Model message file
+	  RLAMBDA1 : initial Marquart lambda
+	  RLAMFAC : dictates Marqaurt lambda adjustment process
+	  PHIRATSUF : fractional objective function sufficient for end of current iterations
+	  PHIREDLAM : termination criterion for Marquardt lamda search
+	  NUMLAM : maximum number of marquart lambda test
+	  JACUPDATE : activation of Broyden;s Jacobian Update procedure
+	  LAMFORGIVE : treat model run failure during the lamda search as high objective function
+	  RELPARMAX : paramater relative change limit
+	  FACPARMAX : paramater factor change limit
+	  FACORIG : minimum fraction of original paramearcheter value in evaulating relative change
+	  IBOUNDSTICK : instruct PEST not to compute derivatives for parameter at its bounds
+	  UPVECBEND : instructs PEST to bend parameter upgrade vector if parameter hits bounds
+	  ABSPARMAX : paramater absolute change limit
+	  PHIREDSWH : sets objective function change for introduction of central derivatives
+	  NOPTMAX : -2,-1,0,or any number greater then zero number of optimisation iterations
+	  PHIREDSTP : relative objective function reduction triggering termination
+	  NPHISTP : number of successive iterations over which PHIREDSTP applies
+	  NPHINORED : number of iterations since last drop in objective function to trigger termination
+	  RELPARSTP : maximum relative paramater change triggering termination
+	  NRELPAR : number of successive iteration over which RELPARSTP applies
+	  PHISTOPTHRESH : objective function threshold triggering termination
+	  LASTRUN : 0, 1 instructs PEST to undertake final model run with best paramaters 
+	  PHIABANDON : objective function value at which to abandon optimisation 
+	  ICOV : 0,1 record covariance matrix 
+	  ICOR : 0,1 record correlation matrix
+	  IEIG : 0,1 record eigenvectiors in matrix file 
+	  IRES : 0,1 record resolution data
+	  JCOSAVE : "jcosave or nojcosave" save best Jacobian fileas JCO file 
+	  VERBOSEREC : "verboserec or noverboserec" omit obeservation data from rec file
+	  JCOSAVEITN : "jcosaveitn" or nojcosaveitn" write current jacobian matrix to iteration specific JCO file
+	  REISAVEITN : "reisaveitn or noreisaveitn" Store residuals to iteration specific residuals file
+	  PARSAVEITN : "parsaveitn or noparsaveitin" Store iteration specific paramater value files
+	'''
+	  
+	def __init__(self,rstfile,pestmode,npar,nobs,npargp,nprior,nobsgp,maxcompdim,ntplfle,ninsfle,precis,dpoint,numcom,
+		      jacfile,messfile,obsreref,rlambda1,rlamfac,phiratsuf,phiredlam,numlam,jacupdate,lamforgive,derforgive,relparmax,facparmax,
+		      facorig,iboundstick,upvecbend,absparmax ,phiredswh,noptmax,phiredstp,nphistp,nphinored,relparstp,nrelpar,phistropthresh,lastrun,phiaboandon,icov,
+		      icor,ieig,ires,jcosave,verboserec,jcosaveitn,reisaveitn,parsaveitn,parsaverun):
+		self.rstfile = rstfile
+		self.pestmode = pestmode
+		self.npar = npar
+		self.nobs = nobs
+		self.npargp = npargp
+		self.nprior = nprior
+		self.nobsgp = nobsgp
+		self.maxcompdim = maxcompdim
+		self.ntplfle = ntplfle
+		self.ninsfle = ninsfle
+		self.precis = precis
+		self.dpoint = dpoint
+		self.numcom = numcom
+		self.jacfile = jacfile
+		self.messfile = messfile
+		self.obsreref = obsreref
+		self.rlambda1 = rlambda1
+		self.rlamfac = rlamfac
+		self.phiratsuf = phiratsuf
+		self.phiredlam = phiredlam
+		self.numlam = numlam
+		self.jacupdate = jacupdate
+		self.lamforgive = lamforgive
+		self.derforgive = deforgive
+		self.relparmax = relparmax
+		self.facparmax = facparmax
+		self.facorig = facorig
+		self.iboundstick = iboundstick
+		self.upvecbend = upvecbend
+		self.absparmax = absparmax
+		self.phiredswh = phiredswh
+		self.noptmax = noptmax
+		self.phiredstp = phiredstp
+		self.nphistp = nphistp
+		self.nphinored = nphinored
+		self.relparstp = relparstp
+		self.nrelpar = nrelpar
+		self.phistropthresh = phistropthresh
+		self.lastrun = lastrun
+		self.phiabandon = phiabandon
+		self.icov = icov
+		self.icor = icor
+		self.ieig = ieig
+		self.ires = ires
+		self.jcosave = jcosave
+		self.verboserec = verboserec
+		self.jcosaveitn = jcosaveitn
+		self.reisaveitn = reisaveitn
+		self.parsaveitn = parsaveitn
+		self.parsaverun = rarsaverun
+		return
       
 class svd(object):
   '''
@@ -194,20 +195,20 @@ class obsgroup(object):
   
   
 class observation(object):
-   '''
-   create the observation data object
+    '''
+    create the observation data object
     
-   Attributes:
-      OBSNME : observation name
-      OBSVAL : observation value
-      WEIGHT : observation weight
-      OBGNME : group that observation belongs
-  '''
-  def __init__(self,obsnme,obsval,weight,obgnme):
-    self.obsnme = obsnme
-    self.obsval = obsval
-    self.weight = weight
-    self.obgnme = obgnme
+    Attributes:
+	OBSNME : observation name
+	OBSVAL : observation value
+	WEIGHT : observation weight
+	OBGNME : group that observation belongs
+    '''
+    def __init__(self,obsnme,obsval,weight,obgnme):
+      self.obsnme = obsnme
+      self.obsval = obsval
+      self.weight = weight
+      self.obgnme = obgnme
 
 class commandline(object):
   '''
@@ -246,8 +247,8 @@ class prior(object):
     EQ : PFAC*PARNME + PFIC * log(PARNME) = PIVAL Text representing a prior information equation
     WEIGHT : weight of the prior information
     OBGPNME: Observation group that prior information belongs to 
- '''
- def __init__(self,pilbl,eq,weight,obgpnme):
+  '''
+  def __init__(self,pilbl,eq,weight,obgpnme):
     self.pilbl = pilbl
     self.eq = eq
     self.weight = weight
@@ -255,20 +256,20 @@ class prior(object):
     return
 
 class regularisation(object):
-  '''
-  Regularisation section of the PEST control file
+    '''
+    Regularisation section of the PEST control file
   
-  Attritutes:
-    PHIMLIM : target measurement objective function
-    PHIMACCEPT : acceptable measurement objective function
-    WFINIT : inital regulristion weight factor
-    WFMIN : minimum regularisation weight factor
-    WFMAX : maximum regularisation weight factor
-    WFFAC : regularisation weight factor adjjustment factor
-    WFTOL : covergence criterion for regulatrisation weight factor
-    IREGADJ : 0,1,2,3,4,5  instructs PEST to perform iner-regularisation group weight factor adjustments
-   '''
-   def __init__(self,phimlim,phimaccept,wfinit,wfmin,wfmax,wffac,wftol,irgadj):
+    Attritutes:
+      PHIMLIM : target measurement objective function
+      PHIMACCEPT : acceptable measurement objective function
+      WFINIT : inital regulristion weight factor
+      WFMIN : minimum regularisation weight factor
+      WFMAX : maximum regularisation weight factor
+      WFFAC : regularisation weight factor adjjustment factor
+      WFTOL : covergence criterion for regulatrisation weight factor
+      IREGADJ : 0,1,2,3,4,5  instructs PEST to perform iner-regularisation group weight factor adjustments
+    '''
+    def __init__(self,phimlim,phimaccept,wfinit,wfmin,wfmax,wffac,wftol,irgadj):
       self.phimlim = phimlim
       self.phimaccept  = phumaccept
       self.wfinit = wfinit
@@ -287,7 +288,7 @@ def createPCF(filName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList
     f.write('pcf\n')
     f.write('* control data\n')
     f.write('%s %s\n' % (controlObj.rstfile,controlObj.pestmode))
-    f.write('%s %s %s %s %s %s\n') % (controlObj.npar,controlObj.nobs,controlObj.npargp,controlObj.nprior,controlObj.nobsgp,controlObj.maxcompdim))
+    f.write('%s %s %s %s %s %s\n' % (controlObj.npar,controlObj.nobs,controlObj.npargp,controlObj.nprior,controlObj.nobsgp,controlObj.maxcompdim))
     f.write('%s %s %s %s %s %s %s %s\n' % (controlObj.ntplfle,controlObj.ninsfle,controlObj.precis,controlObj.dpoint,controlObj.numcom,controlObj.jacfile,\
 					  controlObj.messfile,controlObj.obsreref))
     f.write('%s %s %s %s %s %s %s %s\n' % (controlObj.rlambda1,controlObj.rlamfac,controlObj.phiratsuf,controlObj.phiredlam,controlObj.numlam,controlObj.jacupdate\
@@ -295,9 +296,9 @@ def createPCF(filName,controlObj,svdObj,pargpObjList,parDataObjList,obsgpObjList
     f.write('%s %s %s %s %s %s\n' % (controlObj.relparmax,controlObj.facparmax,controlObj.facorig,controlObj.iboundstick,controlObj.upvecbend,controlObj.absparmax))
     f.write('%s\n' % (controlObj.phiredswh))
     f.write('%s %s %s %s %s %s %s %s %s\n' % (controlObj.noptmax,controlObj.phiredstp,controlObj.nphistp,controlObj.nphinored,controlObj.relparstp,controlObj.nrelpar,\
-					      controlObj.phistropthresh,controlObj.lastrun,controlObj.phiabandon)
-    f.write('%s %s %s %s %s %s %s %s %s %s\n' % (controlObj.icov,controlObj.icor,controlObj.ieig,controlObj.ires,controlObj.jcosave,controlObj.verboserec,controlObj.jcosaveitn,\
-						controlObj.reisaveitn,controlObj.parsaveitn,controlObj.parsaverun)
+					      controlObj.phistropthresh,controlObj.lastrun,controlObj.phiabandon))
+    f.write('%s %s %s %s %s %s %s %s %s %s\n' % (controlObj.icov,controlObj.icor,controlObj.ieig,controlObj.ires,controlObj.jcosave,controlObj.verboserec,controlObj.jcosaveitn,
+						controlObj.reisaveitn,controlObj.parsaveitn,controlObj.parsaverun))
     f.write('* singular value decomposition\n')
     f.write('%s\n' % (svdObj.svdmode))
     f.write('%s %s\n' % (svdObj.maxsing,svdObj.eigthresh))
